@@ -28,6 +28,12 @@ module.exports = {
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   // 如果你不需要使用eslint，把lintOnSave设为false即可
+  pages: {
+    index: {
+      // 打包为库时，和dev时入口文件不同
+      entry: process.env.NODE_ENV === 'production' ? './src/index.js' : './src/main.js'
+    }
+  },
   lintOnSave: true,
   chainWebpack: config => {
     config.resolve.alias
