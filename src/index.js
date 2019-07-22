@@ -1,5 +1,5 @@
-import charts from '_c/charts'
-import common from '_c/common/util.js'
+import { ChartPie, ChartBar } from '_c/charts'
+import { showTitle } from '_c/common/util.js'
 import commonIcon from '_c/common-icon'
 import countTo from '_c/count-to'
 import cropper from '_c/cropper'
@@ -35,8 +35,9 @@ const components = [
   cropper,
   countTo,
   commonIcon,
-  common,
-  charts
+  showTitle,
+  ChartPie,
+  ChartBar
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册

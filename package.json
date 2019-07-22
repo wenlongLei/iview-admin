@@ -1,7 +1,7 @@
 {
-  "name": "iview-admin",
-  "version": "2.0.0",
-  "author": "Lison<lison16new@163.com>",
+  "name": "admin-ui-kzx",
+  "version": "1.0.0",
+  "author": "leiwl<leiwenlong_kzx@citicbank.com>",
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve --open",

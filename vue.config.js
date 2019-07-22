@@ -24,14 +24,14 @@ module.exports = {
   // sub-path here. For example, if your app is deployed at
   // https://www.foobar.com/my-app/
   // then change this to '/my-app/'
-  baseUrl: BASE_URL,
+  publicPath: BASE_URL,
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   // 如果你不需要使用eslint，把lintOnSave设为false即可
   pages: {
     index: {
       // 打包为库时，和dev时入口文件不同
-      entry: process.env.NODE_ENV === 'production' ? './src/index.js' : './src/main.js'
+      entry: process.env.NODE_ENV === 'production' ? './src/index.js' : './src/index.js'
     }
   },
   lintOnSave: true,
