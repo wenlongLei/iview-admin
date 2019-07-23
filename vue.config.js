@@ -30,15 +30,159 @@ module.exports = {
   // 如果你不需要使用eslint，把lintOnSave设为false即可
   pages: {
     index: {
-      // 打包为库时，和dev时入口文件不同
-      entry: process.env.NODE_ENV === 'production' ? './src/index.js' : './src/index.js'
+      entry: 'example/main.js',
+      template: 'public/index.html',
+      filename: 'index.html'
     }
   },
   lintOnSave: true,
+  /* css: {
+    loaderOptions: {
+      // 给 sass-loader 传递选项
+      sass: {
+        // @/ 是 src/ 的别名
+        // 所以这里假设你有 `src/variables.scss` 这个文件
+        data: `@import "~@/variables.scss";`
+      }
+    }
+  }, */
   chainWebpack: config => {
     config.resolve.alias
-      .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
-      .set('_c', resolve('src/components'))
+      .set('@', resolve('example')) // key,value自行定义，比如.set('@@', resolve('example/packages'))
+      .set('_c', resolve('packages'))
+    // config.module
+    //   .rule('js')
+    //   .include
+    //   .add(['/packages', 'example'])
+    //   .end()
+    //   .use('babel')
+    //   .loader('babel-loader')
+    //   .tap(options => {
+    //     // 修改它的选项...
+    //     return options
+    //   })
+    // config.module
+    //   .rule('vue')
+    //   .include
+    //   .add(['/packages', 'example'])
+    //   .end()
+    //   .use('cache-loader')
+    //   .loader('cache-loader')
+    //   .tap(options => {
+    //     // 修改它的选项...
+    //     return options
+    //   })
+    // config.module
+    //   .rule('vue')
+    //   .include
+    //   .add(['/packages', 'example'])
+    //   .end()
+    //   .use('vue-loader')
+    //   .loader('vue-loader')
+    //   .tap(options => {
+    //     // 修改它的选项...
+    //     return options
+    //   })
+    config.module.rule('vue').include.add(['/packages', 'example']).end().use('cache-loader').loader('cache-loader')
+    config.module.rule('vue').include.add(['/packages', 'example']).end().use('vue-loader').loader('vue-loader')
+    config.module.rule('images').include.add(['/packages', 'example']).end().use('url-loader').loader('url-loader')
+    config.module.rule('svg').include.add(['/packages', 'example']).end().use('file-loader').loader('file-loader')
+    config.module.rule('media').include.add(['/packages', 'example']).end().use('url-loader').loader('url-loader')
+    config.module.rule('fonts').include.add(['/packages', 'example']).end().use('url-loader').loader('url-loader')
+    config.module.rule('pug').oneOf('pug-vue').include.add(['/packages', 'example']).end().use('pug-plain-loader').loader('pug-plain-loader')
+    config.module.rule('pug').oneOf('pug-template').include.add(['/packages', 'example']).end().use('raw').loader('raw')
+    config.module.rule('pug').oneOf('pug-template').include.add(['/packages', 'example']).end().use('pug-plain').loader('pug-plain')
+    config.module.rule('css').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('vue-style-loader').loader('vue-style-loader')
+    config.module.rule('css').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('css-loader').loader('css-loader')
+    config.module.rule('css').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('postcss-loader').loader('postcss-loader')
+    config.module.rule('css').oneOf('vue').include.add(['/packages', 'example']).end().use('vue-style-loader').loader('vue-style-loader')
+    config.module.rule('css').oneOf('vue').include.add(['/packages', 'example']).end().use('css-loader').loader('css-loader')
+    config.module.rule('css').oneOf('vue').include.add(['/packages', 'example']).end().use('postcss-loader').loader('postcss-loader')
+    config.module.rule('css').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('vue-style-loader').loader('vue-style-loader')
+    config.module.rule('css').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('css-loader').loader('css-loader')
+    config.module.rule('css').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('css').oneOf('normal').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('css').oneOf('normal').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('css').oneOf('normal').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('postcss').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('postcss').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('postcss').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('postcss').oneOf('vue').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('postcss').oneOf('vue').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('postcss').oneOf('vue').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('postcss').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('postcss').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('postcss').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('postcss').oneOf('normal').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('postcss').oneOf('normal').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('postcss').oneOf('normal').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('scss').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('scss').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('scss').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('scss').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('sass-loader')
+    config.module.rule('scss').oneOf('vue').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('scss').oneOf('vue').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('scss').oneOf('vue').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('scss').oneOf('vue').include.add(['/packages', 'example']).end().use('sass-loader')
+    config.module.rule('scss').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('scss').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('scss').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('scss').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('sass-loader')
+    config.module.rule('scss').oneOf('normal').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('scss').oneOf('normal').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('scss').oneOf('normal').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('scss').oneOf('normal').include.add(['/packages', 'example']).end().use('sass-loader')
+    config.module.rule('sass').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('sass').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('sass').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('sass').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('sass-loader')
+    config.module.rule('sass').oneOf('vue').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('sass').oneOf('vue').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('sass').oneOf('vue').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('sass').oneOf('vue').include.add(['/packages', 'example']).end().use('sass-loader')
+    config.module.rule('sass').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('sass').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('sass').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('sass').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('sass-loader')
+    config.module.rule('sass').oneOf('normal').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('sass').oneOf('normal').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('sass').oneOf('normal').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('sass').oneOf('normal').include.add(['/packages', 'example']).end().use('sass-loader')
+    config.module.rule('less').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('less').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('less').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('less').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('less-loader')
+    config.module.rule('less').oneOf('vue').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('less').oneOf('vue').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('less').oneOf('vue').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('less').oneOf('vue').include.add(['/packages', 'example']).end().use('less-loader')
+    config.module.rule('less').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('less').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('less').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('less').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('less-loader')
+    config.module.rule('less').oneOf('normal').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('less').oneOf('normal').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('less').oneOf('normal').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('less').oneOf('normal').include.add(['/packages', 'example']).end().use('less-loader')
+    config.module.rule('stylus').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('stylus').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('stylus').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('stylus').oneOf('vue-modules').include.add(['/packages', 'example']).end().use('stylus-loader')
+    config.module.rule('stylus').oneOf('vue').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('stylus').oneOf('vue').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('stylus').oneOf('vue').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('stylus').oneOf('vue').include.add(['/packages', 'example']).end().use('stylus-loader')
+    config.module.rule('stylus').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('stylus').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('stylus').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('stylus').oneOf('normal-modules').include.add(['/packages', 'example']).end().use('stylus-loader')
+    config.module.rule('stylus').oneOf('normal').include.add(['/packages', 'example']).end().use('vue-style-loader')
+    config.module.rule('stylus').oneOf('normal').include.add(['/packages', 'example']).end().use('css-loader')
+    config.module.rule('stylus').oneOf('normal').include.add(['/packages', 'example']).end().use('postcss-loader')
+    config.module.rule('stylus').oneOf('normal').include.add(['/packages', 'example']).end().use('stylus-loader')
+    config.module.rule('js').include.add(['/packages', 'example']).end().use('cache-loader')
+    config.module.rule('js').include.add(['/packages', 'example']).end().use('babel-loader')
+    config.module.rule('eslint').include.add(['/packages', 'example']).end().use('eslint-loader')
   },
   // 设为false打包时不生成.map文件
   productionSourceMap: false
