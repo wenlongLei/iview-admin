@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Cropper from '@/packages/cropper'
+import Cropper from '_c/cropper'
 import { uploadImg } from '@/api/data'
 export default {
   name: 'cropper_page',

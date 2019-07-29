@@ -1,6 +1,40 @@
-import Main from '_c/main'
+import Main from '@/src/main'
 import parentView from '_c/parent-view'
-
+import Login from '@/src/login/login.vue'
+import Home from '@/src/single-page/home'
+import Join from '@/src/join-page.vue'
+import Message from '@/src/single-page/message/index.vue'
+import TreeSelect from '@/src/components/tree-select/index.vue'
+import CountTo from '@/src/components/count-to/count-to.vue'
+import DragList from '@/src/components/drag-list/drag-list.vue'
+import DragDrawer from '@/src/components/drag-drawer'
+import OrgTree from '@/src/components/org-tree'
+import TreeTable from '@/src/components/tree-table/index.vue'
+import Cropper from '@/src/components/cropper/cropper.vue'
+import Tables from '@/src/components/tables/tables.vue'
+import SplitPane from '@/src/components/split-pane/split-pane.vue'
+import Markdown from '@/src/components/markdown/markdown.vue'
+import Editor from '@/src/components/editor/editor.vue'
+import Icons from '@/src/components/icons/icons.vue'
+import UpdateTable from '@/src/update/update-table.vue'
+import UpdatePaste from '@/src/update/update-paste.vue'
+import UpdateExcel from '@/src/excel/upload-excel.vue'
+import ExportExcel from '@/src/excel/export-excel.vue'
+import ToolsMethods from '@/src/tools-methods/tools-methods.vue'
+import I18n from '@/src/i18n/i18n-page.vue'
+import ErrorStore from '@/src/error-store/error-store.vue'
+import ErrorLogger from '@/src/single-page/error-logger.vue'
+import Directive from '@/src/directive/directive.vue'
+/*eslint-disable*/
+import Mutilevel_2_1 from '@/src/multilevel/level-2-1.vue'
+import Mutilevel_2_2_1 from '@/src/multilevel/level-2-2/level-2-2-1.vue'
+import Mutilevel_2_2_2 from '@/src/multilevel/level-2-2/level-2-2-2.vue'
+import Mutilevel_2_3 from '@/src/multilevel/level-2-3.vue'
+import Params from '@/src/argu-page/params.vue'
+import Query from '@/src/argu-page/query.vue'
+import ErrPage_401 from '@/src/error-page/401.vue'
+import ErrPage_500 from '@/src/error-page/500.vue'
+import ErrPage_404 from '@/src/error-page/404.vue'
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
  * meta: {
@@ -25,7 +59,7 @@ export default [
       title: 'Login - 登录',
       hideInMenu: true
     },
-    component: () => import('@/src/login/login.vue')
+    component: Login
   },
   {
     path: '/',
@@ -46,7 +80,7 @@ export default [
           notCache: true,
           icon: 'md-home'
         },
-        component: () => import('@/src/single-page/home')
+        component: Home
       }
     ]
   },
@@ -74,7 +108,7 @@ export default [
           icon: '_qq',
           title: 'QQ群'
         },
-        component: () => import('@/src/join-page.vue')
+        component: Join
       }
     ]
   },
@@ -94,7 +128,7 @@ export default [
           icon: 'md-notifications',
           title: '消息中心'
         },
-        component: () => import('@/src/single-page/message/index.vue')
+        component: Message
       }
     ]
   },
@@ -114,7 +148,7 @@ export default [
           icon: 'md-arrow-dropdown-circle',
           title: '树状下拉选择器'
         },
-        component: () => import('@/src/components/tree-select/index.vue')
+        component: TreeSelect
       },
       {
         path: 'count_to_page',
@@ -123,7 +157,7 @@ export default [
           icon: 'md-trending-up',
           title: '数字渐变'
         },
-        component: () => import('@/src/components/count-to/count-to.vue')
+        component: CountTo
       },
       {
         path: 'drag_list_page',
@@ -132,7 +166,7 @@ export default [
           icon: 'ios-infinite',
           title: '拖拽列表'
         },
-        component: () => import('@/src/components/drag-list/drag-list.vue')
+        component: DragList
       },
       {
         path: 'drag_drawer_page',
@@ -141,7 +175,7 @@ export default [
           icon: 'md-list',
           title: '可拖拽抽屉'
         },
-        component: () => import('@/src/components/drag-drawer')
+        component: DragDrawer
       },
       {
         path: 'org_tree_page',
@@ -150,7 +184,7 @@ export default [
           icon: 'ios-people',
           title: '组织结构树'
         },
-        component: () => import('@/src/components/org-tree')
+        component: OrgTree
       },
       {
         path: 'tree_table_page',
@@ -159,7 +193,7 @@ export default [
           icon: 'md-git-branch',
           title: '树状表格'
         },
-        component: () => import('@/src/components/tree-table/index.vue')
+        component: TreeTable
       },
       {
         path: 'cropper_page',
@@ -168,7 +202,7 @@ export default [
           icon: 'md-crop',
           title: '图片裁剪'
         },
-        component: () => import('@/src/components/cropper/cropper.vue')
+        component: Cropper
       },
       {
         path: 'tables_page',
@@ -177,7 +211,7 @@ export default [
           icon: 'md-grid',
           title: '多功能表格'
         },
-        component: () => import('@/src/components/tables/tables.vue')
+        component: Tables
       },
       {
         path: 'split_pane_page',
@@ -186,7 +220,7 @@ export default [
           icon: 'md-pause',
           title: '分割窗口'
         },
-        component: () => import('@/src/components/split-pane/split-pane.vue')
+        component: SplitPane
       },
       {
         path: 'markdown_page',
@@ -195,7 +229,7 @@ export default [
           icon: 'logo-markdown',
           title: 'Markdown编辑器'
         },
-        component: () => import('@/src/components/markdown/markdown.vue')
+        component: Markdown
       },
       {
         path: 'editor_page',
@@ -204,7 +238,7 @@ export default [
           icon: 'ios-create',
           title: '富文本编辑器'
         },
-        component: () => import('@/src/components/editor/editor.vue')
+        component: Editor
       },
       {
         path: 'icons_page',
@@ -213,7 +247,7 @@ export default [
           icon: '_bear',
           title: '自定义图标'
         },
-        component: () => import('@/src/components/icons/icons.vue')
+        component: Icons
       }
     ]
   },
@@ -233,7 +267,7 @@ export default [
           icon: 'ios-document',
           title: '上传Csv'
         },
-        component: () => import('@/src/update/update-table.vue')
+        component: UpdateTable
       },
       {
         path: 'update_paste_page',
@@ -242,7 +276,7 @@ export default [
           icon: 'md-clipboard',
           title: '粘贴表格数据'
         },
-        component: () => import('@/src/update/update-paste.vue')
+        component: UpdatePaste
       }
     ]
   },
@@ -262,7 +296,7 @@ export default [
           icon: 'md-add',
           title: '导入EXCEL'
         },
-        component: () => import('@/src/excel/upload-excel.vue')
+        component: UpdateExcel
       },
       {
         path: 'export-excel',
@@ -271,7 +305,7 @@ export default [
           icon: 'md-download',
           title: '导出EXCEL'
         },
-        component: () => import('@/src/excel/export-excel.vue')
+        component: ExportExcel
       }
     ]
   },
@@ -291,7 +325,7 @@ export default [
           title: '工具方法',
           beforeCloseName: 'before_close_normal'
         },
-        component: () => import('@/src/tools-methods/tools-methods.vue')
+        component: ToolsMethods
       }
     ]
   },
@@ -310,7 +344,7 @@ export default [
           icon: 'md-planet',
           title: 'i18n - {{ i18n_page }}'
         },
-        component: () => import('@/src/i18n/i18n-page.vue')
+        component: I18n
       }
     ]
   },
@@ -329,7 +363,7 @@ export default [
           icon: 'ios-bug',
           title: '错误收集'
         },
-        component: () => import('@/src/error-store/error-store.vue')
+        component: ErrorStore
       }
     ]
   },
@@ -349,7 +383,7 @@ export default [
           icon: 'ios-bug',
           title: '错误收集'
         },
-        component: () => import('@/src/single-page/error-logger.vue')
+        component: ErrorLogger
       }
     ]
   },
@@ -368,7 +402,7 @@ export default [
           icon: 'ios-navigate',
           title: '指令'
         },
-        component: () => import('@/src/directive/directive.vue')
+        component: Directive
       }
     ]
   },
@@ -388,7 +422,7 @@ export default [
           icon: 'md-funnel',
           title: '二级-1'
         },
-        component: () => import('@/src/multilevel/level-2-1.vue')
+        component: Mutilevel_2_1
       },
       {
         path: 'level_2_2',
@@ -408,7 +442,7 @@ export default [
               icon: 'md-funnel',
               title: '三级'
             },
-            component: () => import('@/src/multilevel/level-2-2/level-2-2-1.vue')
+            component: Mutilevel_2_2_1
           },
           {
             path: 'level_2_2_2',
@@ -417,7 +451,7 @@ export default [
               icon: 'md-funnel',
               title: '三级'
             },
-            component: () => import('@/src/multilevel/level-2-2/level-2-2-2.vue')
+            component: Mutilevel_2_2_2
           }
         ]
       },
@@ -428,7 +462,7 @@ export default [
           icon: 'md-funnel',
           title: '二级-3'
         },
-        component: () => import('@/src/multilevel/level-2-3.vue')
+        component: Mutilevel_2_3
       }
     ]
   },
@@ -449,7 +483,7 @@ export default [
           notCache: true,
           beforeCloseName: 'before_close_normal'
         },
-        component: () => import('@/src/argu-page/params.vue')
+        component: Params
       },
       {
         path: 'query',
@@ -459,7 +493,7 @@ export default [
           title: route => `{{ query }}-${route.query.id}`,
           notCache: true
         },
-        component: () => import('@/src/argu-page/query.vue')
+        component: Query
       }
     ]
   },
@@ -469,7 +503,7 @@ export default [
     meta: {
       hideInMenu: true
     },
-    component: () => import('@/src/error-page/401.vue')
+    component: ErrPage_401
   },
   {
     path: '/500',
@@ -477,7 +511,7 @@ export default [
     meta: {
       hideInMenu: true
     },
-    component: () => import('@/src/error-page/500.vue')
+    component: ErrPage_500
   },
   {
     path: '*',
@@ -485,6 +519,6 @@ export default [
     meta: {
       hideInMenu: true
     },
-    component: () => import('@/src/error-page/404.vue')
+    component: ErrPage_404
   }
 ]

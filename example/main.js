@@ -1,5 +1,8 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+/*
+ * The Vue build version to load with the `import` command
+ * (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+ *
+ */
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -15,7 +18,8 @@ import '@/assets/icons/iconfont.css'
 import TreeTable from 'tree-table-vue'
 import VOrgTree from 'v-org-tree'
 import 'v-org-tree/dist/v-org-tree.css'
-// 实际打包时应该不引入mock
+import adminUi from 'admin_iview_ui_lib'
+import 'admin_iview_ui_lib/admin_ui_kzx.css'
 /* eslint-disable */
 if (process.env.NODE_ENV !== 'production') require('@/mock')
 
@@ -24,6 +28,7 @@ Vue.use(iView, {
 })
 Vue.use(TreeTable)
 Vue.use(VOrgTree)
+Vue.use(adminUi)
 /**
  * @description 注册admin内置插件
  */
@@ -42,7 +47,6 @@ Vue.prototype.$config = config
 importDirective(Vue)
 Vue.directive('clickOutside', clickOutside)
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
