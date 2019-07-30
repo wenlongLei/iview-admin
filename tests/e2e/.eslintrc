@@ -9,6 +9,10 @@
     "html",
     "vue"
   ],
+  "extends": [
+    "plugin:vue/essential",
+    "@vue/standard"
+  ],
   "env": {
     "mocha": true,
     "cypress/globals": true,

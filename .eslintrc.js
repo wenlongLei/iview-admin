@@ -20,7 +20,10 @@ module.exports = {
   "globals": {
 
   },
-  "extends": [],
+  "extends": [
+    "plugin:vue/essential",
+    "@vue/standard"
+  ],
   "settings": {
   },
   // add your custom rules here

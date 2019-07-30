@@ -63,14 +63,14 @@ module.exports = {
       .set('_c', resolve('packages'))
 
     /*
-     * Object.keys(pages).forEach(page => {
-     * config.plugins.delete(`preload-${page}`)
-     * config.plugins.delete(`prefetch-${page}`)
-     * })
+     * 
      */
   },
   configureWebpack: {
     output: {
+      /*
+      * lib模式打包的引入为根目录
+      * */
       libraryExport: 'default'
     }
   },
